@@ -25,8 +25,17 @@
   <!-- Labels -->
   <div>
     <h3>Labels</h3>
-    <!-- Todo: Spinner -->
 
-    <!-- Todo: Label Selector  -->
+
+    @if (labelsQuery.isLoading()) {
+    <p>Loading...</p>
+    }
+    @else {
+    <pre>
+      {{labelsQuery.data() | json}}
+    </pre>
+    }
+
+
   </div>
 </section>
