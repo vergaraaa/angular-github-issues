@@ -13,7 +13,6 @@
 
   <!-- List -->
   <div class="mt-4 flex flex-col col-span-2">
-    <h3>Issues</h3>
     <a routerLink="/issues/123">Go to issue 123</a>
     <!-- Todo: List -->
 
@@ -24,16 +23,11 @@
 
   <!-- Labels -->
   <div>
-    <h3>Labels</h3>
-
-
     @if (labelsQuery.isLoading()) {
     <p>Loading...</p>
     }
     @else {
-    <pre>
-      {{labelsQuery.data() | json}}
-    </pre>
+    <issues-labels-selector [labels]="labelsQuery.data()?? []" />
     }
 
 
