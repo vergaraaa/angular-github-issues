@@ -1,13 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map, tap } from 'rxjs';
 import { IssueService } from '../../services/issue.service';
+import { IssueCommentComponent } from '../../components/issue-comment/issue-comment.component';
 @Component({
   selector: 'issue-page',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, IssueCommentComponent, RouterLink],
   templateUrl: './issue-page.component.html',
 })
 export default class IssuePageComponent {
@@ -20,4 +21,6 @@ export default class IssuePageComponent {
       tap((issueNumber) => this.issueService.setIssueNumber(issueNumber))
     )
   );
+
+  public issueQuery = this.issueService.getIssueQuery;
 }
