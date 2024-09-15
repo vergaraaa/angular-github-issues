@@ -1,1 +1,2 @@
-export * from './get-labels';
+export * from './get-issues.action';
+export * from './get-labels.action';

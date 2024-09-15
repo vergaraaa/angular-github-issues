@@ -13,12 +13,16 @@
 
   <!-- List -->
   <div class="mt-4 flex flex-col col-span-2">
-    <a routerLink="/issues/123">Go to issue 123</a>
-    <!-- Todo: List -->
-
-    <!-- Todo: Spinner -->
-
-    <!-- Todo: Empty -->
+    @for (issue of issuesQuery.data(); track issue.id) {
+    <issue-item [issue]="issue" />
+    } @empty {
+    @if (issuesQuery.isLoading()) {
+    <p>Loading...</p>
+    }
+    @else {
+    <p>No issues to display</p>
+    }
+    }
   </div>
 
   <!-- Labels -->
