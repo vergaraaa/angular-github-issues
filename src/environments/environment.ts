@@ -1,5 +1,5 @@
 export const environment = {
   baseUrl: `https://api.github.com/repos/angular/angular`,
   githubToken:
-    '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',
+    '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',
 };
