@@ -15,12 +15,13 @@ export const getIssueByNumber = async (
         Authorization: `Bearer ${GITHUB_TOKEN}`,
       },
     });
+
     if (!resp.ok) throw "Cant't load issue";
 
     const issue: GithubIssue = await resp.json();
 
     return issue;
   } catch (error) {
-    throw "Cant't load issue";
+    throw `Can't load issue ${issueNumber}`;
   }
 };

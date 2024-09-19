@@ -11,7 +11,7 @@ const mockIssue = {
   body: '# Hello world',
 };
 
-describe('GetIssdevueByNumber action', () => {
+describe('GetIssueByNumber action', () => {
   it('should fetch issue successfully', async () => {
     const requestURL = `${BASE_URL}/issues/${issueNumber}`;
     const issueReponse = new Response(JSON.stringify(mockIssue), {
@@ -28,5 +28,22 @@ describe('GetIssdevueByNumber action', () => {
         Authorization: `Bearer ${GITHUB_TOKEN}`,
       },
     });
+  });
+
+  it('should not fetch issue successfully', async () => {
+    const requestURL = `${BASE_URL}/issues/${issueNumber}`;
+    const issueReponse = new Response(null, {
+      status: 404,
+      statusText: 'Not Found',
+    });
+
+    spyOn(window, 'fetch').and.resolveTo(issueReponse);
+
+    try {
+      const issue = await getIssueByNumber(issueNumber);
+      expect(true).toBeFalse();
+    } catch (error) {
+      expect(error).toBe(`Can't load issue ${issueNumber}`);
+    }
   });
 });
