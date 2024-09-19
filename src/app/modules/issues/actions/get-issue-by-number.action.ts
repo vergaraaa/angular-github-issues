@@ -9,8 +9,6 @@ const GITHUB_TOKEN = environment.githubToken;
 export const getIssueByNumber = async (
   issueNumber: string
 ): Promise<GithubIssue> => {
-  await sleep(1500);
-
   try {
     const resp = await fetch(`${BASE_URL}/issues/${issueNumber}`, {
       headers: {
