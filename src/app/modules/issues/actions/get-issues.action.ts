@@ -10,8 +10,6 @@ export const getIssues = async (
   state: State = State.All,
   selectedLabels: string[]
 ): Promise<GithubIssue[]> => {
-  await sleep(1500);
-
   const params = new URLSearchParams();
   params.append('state', state);
 
